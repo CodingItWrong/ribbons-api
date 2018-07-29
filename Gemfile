@@ -8,11 +8,26 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rack-cors'
 
-group :development, :test do
-end
-
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'bullet'
+  gem 'dotenv-rails'
+  gem 'faker'
+end
+
+group :development, :test do
+  gem 'pry-rails'
+  gem 'rspec-rails'
+  gem 'coderay'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'factory_bot_rails'
+end
+
+group :production do
+  gem 'rack-attack'
 end
 
 
