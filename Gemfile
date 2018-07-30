@@ -7,6 +7,7 @@ gem 'rails', '~> 5.2.0'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rack-cors'
+gem 'jsonapi-resources'
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
