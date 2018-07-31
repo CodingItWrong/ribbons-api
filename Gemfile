@@ -9,6 +9,7 @@ gem 'puma', '~> 3.11'
 gem 'rack-cors'
 gem 'jsonapi-resources'
 gem 'bcrypt'
+gem 'doorkeeper'
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
