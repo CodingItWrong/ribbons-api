@@ -1,4 +1,4 @@
 # frozen_string_literal: true
-class UserResource < JSONAPI::Resource
+class UserResource < ApplicationResource
   attributes *%i[email password]
 end
