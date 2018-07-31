@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
+  host: <%= ENV['DATABASE_HOST'] %>
   database: bible_reading_production
-  username: bible_reading
-  password: <%= ENV['BIBLE_READING_DATABASE_PASSWORD'] %>
+  username: postgres
+  password:
