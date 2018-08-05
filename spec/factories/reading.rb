@@ -3,6 +3,6 @@
 FactoryBot.define do
   factory :reading do
     user
-    book_num 5 # Deuteronomy
+    book
   end
 end

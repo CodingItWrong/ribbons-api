@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class ReadingResource < ApplicationResource
-  attributes *%i[book_num]
+  has_one :book
 
   before_create { _model.user = current_user }
 

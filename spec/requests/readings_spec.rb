@@ -10,6 +10,7 @@ RSpec.describe 'readings', type: :request do
   end
 
   context 'when authenticated' do
+    let(:book) { FactoryBot.create(:book) }
     let(:user) { FactoryBot.create(:user) }
     let(:token) { FactoryBot.create(:access_token, resource_owner_id: user.id).token }
     let(:headers) {{
@@ -18,24 +19,29 @@ RSpec.describe 'readings', type: :request do
     }}
 
     it "allows retrieving user's own readings" do
-      users_reading = FactoryBot.create(:reading, book_num: 5, user: user)
-      other_reading = FactoryBot.create(:reading, book_num: 4)
+      users_reading = FactoryBot.create(:reading, book: book, user: user)
+      other_reading = FactoryBot.create(:reading, book: book)
 
-      get '/readings', headers: headers
+      get '/readings?include=book', headers: headers
 
       expect(response.status).to eq(200)
 
       response_body = JSON.parse(response.body)
       expect(response_body['data'].count).to eq(1)
-      expect(response_body['data'][0]['attributes']['book-num']).to eq(5)
+      expect(response_body['included'][0]['id']).to eq(book.id.to_s)
     end
 
     it 'associates a reading to the user when creating' do
       params = {
         data: {
           type: 'readings',
-          attributes: {
-            'book-num' => 1,
+          relationships: {
+            book: {
+              data: {
+                type: 'books',
+                id: book.id,
+              },
+            },
           },
         },
       }
