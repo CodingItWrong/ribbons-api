@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class ReadingResource < ApplicationResource
-  attributes :complete
+  attributes :complete, :completed_at
 
   filter :complete, apply: ->(records, value, _options) {
     if value == ['true']
@@ -13,6 +13,14 @@ class ReadingResource < ApplicationResource
   has_one :book
 
   before_create { _model.user = current_user }
+
+  def self.creatable_fields(context)
+    super - %i[completed_at]
+  end
+
+  def self.updatable_fields(context)
+    super - %i[completed_at]
+  end
 
   def self.records(options = {})
     user = current_user(options)
