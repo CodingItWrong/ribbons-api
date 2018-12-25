@@ -11,6 +11,7 @@ class ReadingResource < ApplicationResource
   }
 
   has_one :book
+  has_many :chapter_completions
 
   before_create do
     _model.user = current_user

@@ -3,6 +3,8 @@ class Reading < ApplicationRecord
   belongs_to :user
   belongs_to :book
 
+  has_many :chapter_completions
+
   def complete
     completed_at.present?
   end

@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_05_110612) do
+ActiveRecord::Schema.define(version: 2018_12_25_201014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "books", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "chapter_completions", force: :cascade do |t|
+    t.bigint "reading_id", null: false
+    t.integer "chapter"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reading_id"], name: "index_chapter_completions_on_reading_id"
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
@@ -78,6 +86,7 @@ ActiveRecord::Schema.define(version: 2018_08_05_110612) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "chapter_completions", "readings"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_grants", "users", column: "resource_owner_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"

@@ -5,4 +5,5 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
   has_many :readings
+  has_many :chapter_completions, through: :readings
 end
