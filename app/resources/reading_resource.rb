@@ -12,7 +12,9 @@ class ReadingResource < ApplicationResource
 
   has_one :book
 
-  before_create { _model.user = current_user }
+  before_create do
+    _model.user = current_user
+  end
 
   def self.creatable_fields(context)
     super - %i[completed_at]
@@ -25,11 +27,5 @@ class ReadingResource < ApplicationResource
   def self.records(options = {})
     user = current_user(options)
     user.readings
-  end
-
-  private
-
-  def self.current_user(options)
-    options.fetch(:context).fetch(:current_user)
   end
 end

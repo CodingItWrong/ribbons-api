@@ -8,6 +8,6 @@ class Reading < ApplicationRecord
   end
 
   def complete=(complete)
-    self.completed_at = complete ? DateTime.now : nil
+    self.completed_at = complete ? Time.now : nil
   end
 end

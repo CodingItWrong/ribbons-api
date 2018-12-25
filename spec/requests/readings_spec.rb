@@ -13,14 +13,16 @@ RSpec.describe 'readings', type: :request do
     let(:book) { FactoryBot.create(:book) }
     let(:user) { FactoryBot.create(:user) }
     let(:token) { FactoryBot.create(:access_token, resource_owner_id: user.id).token }
-    let(:headers) {{
-      'Authorization' => "Bearer #{token}",
-      'Content-Type' => 'application/vnd.api+json',
-    }}
+    let(:headers) {
+      {
+        'Authorization' => "Bearer #{token}",
+        'Content-Type' => 'application/vnd.api+json',
+      }
+    }
 
     it "allows retrieving user's own readings" do
-      users_reading = FactoryBot.create(:reading, book: book, user: user)
-      other_reading = FactoryBot.create(:reading, book: book)
+      FactoryBot.create(:reading, book: book, user: user)
+      FactoryBot.create(:reading, book: book)
 
       get '/readings?include=book', headers: headers
 

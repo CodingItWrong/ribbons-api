@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'books', type: :request do
-  it "allows retrieving all books" do
+  it 'allows retrieving all books' do
     books = FactoryBot.create_list(:book, 3)
 
     get '/books'
