@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class ReadingResource < ApplicationResource
-  attributes :complete, :completed_at
+  attributes :complete, :completed_at, :furthest_read_chapter
 
   filter :complete, apply: ->(records, value, _options) {
     if value == ['true']
