@@ -8,7 +8,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(email: 'josh@joshjustice.com', password: 'password')
+# User.create!(email: 'josh@joshjustice.com', password: 'password')
 
 books = [
   { name: 'Genesis', num_chapters: 50 },
