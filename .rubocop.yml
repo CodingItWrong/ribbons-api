@@ -59,3 +59,6 @@ Style/Lambda:
 # casecmp().zero? is less readable, so I don't want to enforce it unless performance requires it
 Performance/Casecmp:
   Enabled: false
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
