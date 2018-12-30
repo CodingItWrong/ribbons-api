@@ -9,5 +9,5 @@ class ChapterCompletionResource < ApplicationResource
     user.chapter_completions
   end
 
-  filter :today, apply: -> (records, _value, _options) { records.today }
+  filter :today, apply: ->(records, _value, _options) { records.today }
 end
