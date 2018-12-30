@@ -29,7 +29,7 @@ books = [
   {name: 'Nehemiah', num_chapters: 13},
   {name: 'Esther', num_chapters: 10},
   {name: 'Job', num_chapters: 42},
-  {name: 'Psalms', num_chapters: 150},
+  {name: 'Psalms', num_chapters: 150, singular_name: 'Psalm'},
   {name: 'Proverbs', num_chapters: 31},
   {name: 'Ecclesiastes', num_chapters: 12},
   {name: 'Song of Solomon', num_chapters: 8},
