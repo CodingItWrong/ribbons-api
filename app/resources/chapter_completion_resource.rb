@@ -8,4 +8,11 @@ class ChapterCompletionResource < ApplicationResource
     user = current_user(options)
     user.chapter_completions
   end
+
+  filter :today, apply: -> (records, _value, _options) {
+    records.where(
+      'chapter_completions.created_at > ?',
+      DateTime.now.beginning_of_day,
+    )
+  }
 end
