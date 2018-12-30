@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class BookResource < ApplicationResource
-  attributes *%i[name num_chapters last_read_at]
+  attributes *%i[name singular_name num_chapters last_read_at]
 
   def last_read_at
     return nil if current_user.nil?
