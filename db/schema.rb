@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_25_230049) do
+ActiveRecord::Schema.define(version: 2018_12_30_212345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2018_12_25_230049) do
   create_table "books", force: :cascade do |t|
     t.string "name"
     t.integer "num_chapters"
+    t.string "singular_name"
   end
 
   create_table "chapter_completions", force: :cascade do |t|
@@ -87,7 +88,7 @@ ActiveRecord::Schema.define(version: 2018_12_25_230049) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "chapter_completions", "readings"
+  add_foreign_key "chapter_completions", "readings", on_delete: :cascade
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_grants", "users", column: "resource_owner_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
