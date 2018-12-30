@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class ChapterCompletionResource < ApplicationResource
-  attributes :chapter
+  attributes :chapter, :created_at
 
   has_one :reading
 
