@@ -7,7 +7,7 @@ RSpec.describe 'books', type: :request do
     books = FactoryBot.create_list(:book, 3)
     user = FactoryBot.create(:user)
     time = '2019-01-05T14:18:30.240Z'
-    reading = FactoryBot.create(:reading, book: books[1], user: user, completed_at: time)
+    FactoryBot.create(:reading, book: books[1], user: user, completed_at: time)
 
     token = FactoryBot.create(:access_token, resource_owner_id: user.id).token
     headers = {
