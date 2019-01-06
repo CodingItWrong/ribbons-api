@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe 'readings', type: :request do
+  include_context 'with a logged in user'
+
   it 'does not allow retrieving readings when unauthenticated' do
     get '/readings'
 
@@ -11,14 +13,6 @@ RSpec.describe 'readings', type: :request do
 
   context 'when authenticated' do
     let(:book) { FactoryBot.create(:book) }
-    let(:user) { FactoryBot.create(:user) }
-    let(:token) { FactoryBot.create(:access_token, resource_owner_id: user.id).token }
-    let(:headers) {
-      {
-        'Authorization' => "Bearer #{token}",
-        'Content-Type' => 'application/vnd.api+json',
-      }
-    }
 
     it "allows retrieving user's own readings" do
       FactoryBot.create(:reading, book: book, user: user)

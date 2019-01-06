@@ -3,9 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe 'chapter_completions', type: :request do
+  include_context 'with a logged in user'
+
   it 'can be filtered to today' do
     book = FactoryBot.create(:book)
-    user = FactoryBot.create(:user)
     reading = FactoryBot.create(:reading, book: book, user: user)
     FactoryBot.create(:chapter_completion,
                       reading: reading,
@@ -13,12 +14,6 @@ RSpec.describe 'chapter_completions', type: :request do
     FactoryBot.create(:chapter_completion,
                       reading: reading,
                       created_at: Time.now)
-
-    token = FactoryBot.create(:access_token, resource_owner_id: user.id).token
-    headers = {
-      'Authorization' => "Bearer #{token}",
-      'Content-Type' => 'application/vnd.api+json',
-    }
 
     get '/chapterCompletions?filter[today]=true', headers: headers
 
