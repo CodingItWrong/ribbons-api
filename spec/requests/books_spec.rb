@@ -3,17 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe 'books', type: :request do
+  include_context 'with a logged in user'
+
   it 'allows retrieving all books' do
     books = FactoryBot.create_list(:book, 3)
-    user = FactoryBot.create(:user)
     time = '2019-01-05T14:18:30.240Z'
     FactoryBot.create(:reading, book: books[1], user: user, completed_at: time)
-
-    token = FactoryBot.create(:access_token, resource_owner_id: user.id).token
-    headers = {
-      'Authorization' => "Bearer #{token}",
-      'Content-Type' => 'application/vnd.api+json',
-    }
 
     get '/books', headers: headers
 
