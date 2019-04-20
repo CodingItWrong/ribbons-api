@@ -6,7 +6,7 @@ class ChapterCompletion < ApplicationRecord
         lambda {
           where(
             'chapter_completions.created_at > ?',
-            DateTime.now.beginning_of_day
+            DateTime.now.beginning_of_day,
           )
         }
 end
