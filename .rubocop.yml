@@ -21,6 +21,9 @@ Layout/EmptyLineAfterMagicComment:
 Layout/IndentArray:
   Enabled: false
 
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: false
+
 Style/BlockDelimiters:
   Enabled: false
 
