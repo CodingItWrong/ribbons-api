@@ -31,14 +31,7 @@ RSpec.describe 'readings', type: :request do
       params = {
         data: {
           type: 'readings',
-          relationships: {
-            book: {
-              data: {
-                type: 'books',
-                id: book.id,
-              },
-            },
-          },
+          relationships: { book: { data: { type: 'books', id: book.id } } },
         },
       }
 

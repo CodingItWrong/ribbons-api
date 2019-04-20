@@ -2,7 +2,9 @@
 
 RSpec.shared_context 'with a logged in user' do
   let!(:user) { FactoryBot.create(:user) }
-  let!(:token) { FactoryBot.create(:access_token, resource_owner_id: user.id).token }
+  let!(:token) do
+    FactoryBot.create(:access_token, resource_owner_id: user.id).token
+  end
   let(:headers) do
     {
       'Authorization' => "Bearer #{token}",

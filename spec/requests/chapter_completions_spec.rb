@@ -8,12 +8,14 @@ RSpec.describe 'chapter_completions', type: :request do
   it 'can be filtered to today' do
     book = FactoryBot.create(:book)
     reading = FactoryBot.create(:reading, book: book, user: user)
-    FactoryBot.create(:chapter_completion,
-                      reading: reading,
-                      created_at: 2.days.ago)
-    FactoryBot.create(:chapter_completion,
-                      reading: reading,
-                      created_at: Time.now)
+    FactoryBot.create(
+      :chapter_completion,
+      reading: reading, created_at: 2.days.ago,
+    )
+    FactoryBot.create(
+      :chapter_completion,
+      reading: reading, created_at: Time.now,
+    )
 
     get '/chapterCompletions?filter[today]=true', headers: headers
 
