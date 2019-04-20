@@ -2,20 +2,18 @@
 class ReadingResource < ApplicationResource
   attributes :complete, :completed_at, :furthest_read_chapter
 
-  filter :complete, apply: ->(records, value, _options) {
-    if value == ['true']
+  filter :complete, apply: lambda do |records, value, _options|
+    if value == %w[true]
       records.where('readings.completed_at IS NOT NULL')
     else
       records.where('readings.completed_at IS NULL')
     end
-  }
+  end
 
   has_one :book
   has_many :chapter_completions
 
-  before_create do
-    _model.user = current_user
-  end
+  before_create { _model.user = current_user }
 
   def self.creatable_fields(context)
     super - %i[completed_at]
