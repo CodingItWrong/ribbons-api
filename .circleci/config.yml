@@ -32,8 +32,6 @@ jobs:
           command: |
             gem update bundler
             bundle install --jobs=4 --retry=3 --path vendor/bundle
-            sudo npm install -g yarn
-            sudo chmod +x /usr/local/bin/yarn
             sudo yarn install
 
       - save_cache:
