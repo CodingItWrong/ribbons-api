@@ -17,7 +17,7 @@ RSpec.describe 'books', type: :request do
     response_body = JSON.parse(response.body)
     expect(response_body['data'].count).to eq(3)
     expect(response_body['data'][0]['attributes']['name']).to eq(books[0].name)
-    expect(response_body['data'][0]['attributes']['lastReadAt']).to be_nil
-    expect(response_body['data'][1]['attributes']['lastReadAt']).to eq(time)
+    expect(response_body['data'][0]['attributes']['last-read-at']).to be_nil
+    expect(response_body['data'][1]['attributes']['last-read-at']).to eq(time)
   end
 end
