@@ -17,7 +17,7 @@ RSpec.describe 'chapter_completions', type: :request do
       reading: reading, created_at: Time.now,
     )
 
-    get '/chapterCompletions?filter[today]=true', headers: headers
+    get '/chapter-completions?filter[today]=true', headers: headers
 
     expect(response.status).to eq(200)
 
