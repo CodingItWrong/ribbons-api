@@ -24,7 +24,7 @@ class ReadingResource < ApplicationResource
   end
 
   def self.updatable_fields(context)
-    super - %i[completed_at]
+    super - %i[completed_at furthest_read_chapter]
   end
 
   def self.records(options = {})
