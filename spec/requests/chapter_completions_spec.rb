@@ -10,11 +10,15 @@ RSpec.describe 'chapter_completions', type: :request do
     reading = FactoryBot.create(:reading, book: book, user: user)
     FactoryBot.create(
       :chapter_completion,
-      reading: reading, created_at: 2.days.ago,
+      reading: reading,
+      chapter: 1,
+      created_at: 2.days.ago,
     )
     FactoryBot.create(
       :chapter_completion,
-      reading: reading, created_at: Time.now,
+      reading: reading,
+      chapter: 2,
+      created_at: Time.now,
     )
 
     get '/chapter-completions?filter[today]=true', headers: headers
